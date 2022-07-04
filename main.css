@@ -259,6 +259,14 @@ body {
   height: 100%;
 }
 
+.container .Player_container .player_options .middle_controls .i1 {
+  margin-right: 15px;
+}
+
+.container .Player_container .player_options .middle_controls .i2 {
+  margin-left: 15px;
+}
+
 .container .Player_container .player_options .middle_controls .play {
   min-width: 40px;
   min-height: 40px;

@@ -122,6 +122,12 @@ body {
         @include centerFlex();
         width: 30%;
         height: 100%;
+        .i1{
+          margin-right: 15px;
+        }
+        .i2{
+          margin-left: 15px;
+        }
         .play {
           min-width: 40px;
           min-height: 40px;
