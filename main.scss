@@ -1,0 +1,210 @@
+@import "./sass/mixins";
+body {
+  background: $white_color;
+  height: 100vh;
+  @include centerFlex();
+}
+.container {
+  background: $white_color;
+  width: 60%;
+  height: 75vh;
+  border-radius: 10px;
+  box-shadow: $main_shad;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  .Player_container {
+    padding: 15px;
+    .music_photo {
+      width: 100%;
+      height: 77%;
+      display: flex;
+      flex-direction: column;
+      .poster {
+        width: 100%;
+        height: 80%;
+        border-radius: 10px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+      }
+      .caption {
+        width: 100%;
+        height: 20%;
+        @include centerFlex();
+        flex-direction: column;
+        h4 {
+          margin: 8px 0;
+          color: $black_color;
+        }
+        p {
+          color: $dGray_color;
+        }
+      }
+    }
+    .progress_area {
+      width: 100%;
+      height: 10%;
+      display: flex;
+      flex-direction: column;
+      .progress_bar {
+        cursor: pointer;
+        height: 50%;
+        padding: 0 10px;
+        @include centerFlex();
+        align-items: end;
+        margin-bottom: 5px;
+        .bar {
+          width: 100%;
+          height: 4px;
+          border-radius: 2px;
+          background-color: $gray_color;
+          position: relative;
+          span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 35%;
+            height: inherit;
+            border-radius: inherit;
+            background: $orange_color;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            i {
+              display: inline-block;
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+              background: $orange_color;
+            }
+          }
+        }
+      }
+      .progress {
+        height: 50%;
+        padding: 0 10px;
+        @include space-between();
+        span {
+          color: $black_color;
+          font-size: 14px;
+        }
+      }
+    }
+    .player_options {
+      width: 100%;
+      height: 13%;
+      display: flex;
+      justify-content: space-between;
+      .option {
+        width: calc(100% / 3);
+        height: 100%;
+        @include centerFlex();
+        button {
+          @include clearInput();
+          cursor: pointer;
+          i {
+            font-size: 26px;
+            color: $orange_color;
+          }
+        }
+      }
+      .right_controls {
+        @include centerFlex();
+        justify-content: start;
+        width: 30%;
+        height: 100%;
+      }
+      .middle_controls {
+        @include centerFlex();
+        width: 30%;
+        height: 100%;
+        .play {
+          min-width: 40px;
+          min-height: 40px;
+          background: linear-gradient(#fff 0%, #cecece 100%);
+          box-shadow: 0 0 4px $orange_color;
+          border-radius: 50%;
+          border: 2px solid $orange_color;
+          @include centerFlex();
+        }
+      }
+      .left_controls {
+        @include centerFlex();
+        justify-content: end;
+        width: 30%;
+        height: 100%;
+      }
+    }
+  }
+  .list_container {
+    padding: 15px;
+    .navigation {
+      height: 10%;
+      @include centerFlex();
+      gap: 15px;
+      span,
+      i {
+        cursor: pointer;
+        color: $black_color;
+      }
+    }
+    .list_flow {
+      height: 400px;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+      .link {
+        cursor: pointer;
+        padding: 10px;
+        display: flex;
+        border-left: 4px solid transparent;
+        &.active,
+        &:hover {
+          background-color: $gray_color;
+          border-color: $orange_color;
+        }
+        height: 65px;
+        .img {
+          width: 45px;
+          height: 45px;
+          img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .cap {
+          margin-left: 15px;
+          h5 {
+            color: $black_color;
+            margin-bottom: 5px;
+          }
+          p {
+            font-size: 14px;
+            color: $dGray_color;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 997px) {
+  .container {
+    width: 90%;
+  }
+}
+@media (max-width: 450px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 0;
+    .list_container {
+      display: none;
+    }
+  }
+}

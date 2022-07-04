@@ -1,0 +1,390 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  background: #f4f5f9;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container {
+  background: #f4f5f9;
+  width: 60%;
+  height: 75vh;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
+}
+
+.container .Player_container {
+  padding: 15px;
+}
+
+.container .Player_container .music_photo {
+  width: 100%;
+  height: 77%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .Player_container .music_photo .poster {
+  width: 100%;
+  height: 80%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.container .Player_container .music_photo .poster img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+
+.container .Player_container .music_photo .caption {
+  width: 100%;
+  height: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .Player_container .music_photo .caption h4 {
+  margin: 8px 0;
+  color: #000000;
+}
+
+.container .Player_container .music_photo .caption p {
+  color: #77787c;
+}
+
+.container .Player_container .progress_area {
+  width: 100%;
+  height: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .Player_container .progress_area .progress_bar {
+  cursor: pointer;
+  height: 50%;
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  margin-bottom: 5px;
+}
+
+.container .Player_container .progress_area .progress_bar .bar {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #e0e0e0;
+  position: relative;
+}
+
+.container .Player_container .progress_area .progress_bar .bar span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35%;
+  height: inherit;
+  border-radius: inherit;
+  background: #fe6b01;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+.container .Player_container .progress_area .progress_bar .bar span i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fe6b01;
+}
+
+.container .Player_container .progress_area .progress {
+  height: 50%;
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .Player_container .progress_area .progress span {
+  color: #000000;
+  font-size: 14px;
+}
+
+.container .Player_container .player_options {
+  width: 100%;
+  height: 13%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .Player_container .player_options .option {
+  width: calc(100% / 3);
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .Player_container .player_options .option button {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.container .Player_container .player_options .option button i {
+  font-size: 26px;
+  color: #fe6b01;
+}
+
+.container .Player_container .player_options .right_controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  width: 30%;
+  height: 100%;
+}
+
+.container .Player_container .player_options .middle_controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30%;
+  height: 100%;
+}
+
+.container .Player_container .player_options .middle_controls .play {
+  min-width: 40px;
+  min-height: 40px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#cecece));
+  background: linear-gradient(#fff 0%, #cecece 100%);
+  -webkit-box-shadow: 0 0 4px #fe6b01;
+          box-shadow: 0 0 4px #fe6b01;
+  border-radius: 50%;
+  border: 2px solid #fe6b01;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .Player_container .player_options .left_controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  width: 30%;
+  height: 100%;
+}
+
+.container .list_container {
+  padding: 15px;
+}
+
+.container .list_container .navigation {
+  height: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15px;
+}
+
+.container .list_container .navigation span,
+.container .list_container .navigation i {
+  cursor: pointer;
+  color: #000000;
+}
+
+.container .list_container .list_flow {
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.container .list_container .list_flow::-webkit-scrollbar {
+  width: 0;
+}
+
+.container .list_container .list_flow .link {
+  cursor: pointer;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-left: 4px solid transparent;
+  height: 65px;
+}
+
+.container .list_container .list_flow .link.active, .container .list_container .list_flow .link:hover {
+  background-color: #e0e0e0;
+  border-color: #fe6b01;
+}
+
+.container .list_container .list_flow .link .img {
+  width: 45px;
+  height: 45px;
+}
+
+.container .list_container .list_flow .link .img img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.container .list_container .list_flow .link .cap {
+  margin-left: 15px;
+}
+
+.container .list_container .list_flow .link .cap h5 {
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+.container .list_container .list_flow .link .cap p {
+  font-size: 14px;
+  color: #77787c;
+}
+
+@media (max-width: 997px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 450px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    -ms-grid-columns: 1fr 0;
+        grid-template-columns: 1fr 0;
+  }
+  .container .list_container {
+    display: none;
+  }
+}
+/*# sourceMappingURL=main.css.map */
