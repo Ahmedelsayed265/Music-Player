@@ -50,6 +50,7 @@ window.addEventListener("load", () => {
   loadMusic(musicIndex);
 });
 function loadMusic(indexNum) {
+  imgWrapper.src = `Images/${musicList[indexNum].poster}.jpg`;
   audioName.innerHTML =
     musicList[indexNum].name + " - " + musicList[indexNum].artist;
   audioArtist.innerHTML = musicList[indexNum].artist;
