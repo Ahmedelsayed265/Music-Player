@@ -46,14 +46,14 @@ const container = document.querySelector(".container"),
   imgWrapper = document.querySelector(".music_photo .poster img"),
   audioName = document.querySelector(".music_photo .caption h4"),
   audioArtist = document.querySelector(".music_photo .caption p"),
-  playPauseBtn = document.querySelector(".play"),
+  playPauseBtn = document.querySelector(".play_btn"),
   mainAudio = document.querySelector("#main-audio");
-let musicIndex = 4;
+let musicIndex = 5;
 window.addEventListener("load", () => {
   loadMusic(musicIndex);
 });
 playPauseBtn.addEventListener("click", () => {
-  const isMusicPaused = container.contains("paused");
+  let isMusicPaused = container.classList.contains("paused");
   isMusicPaused ? pauseMusic() : playMusic();
 });
 function loadMusic(indexNum) {
@@ -67,3 +67,8 @@ function playMusic() {
   container.classList.add("paused");
   mainAudio.play();
 }
+function pauseMusic() {
+  container.classList.remove("paused");
+  mainAudio.pause();
+}
+
