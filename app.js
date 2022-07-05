@@ -42,13 +42,19 @@ const musicList = [
     audioSrc: "file-7",
   },
 ];
-const imgWrapper = document.querySelector(".music_photo .poster img"),
+const container = document.querySelector(".container"),
+  imgWrapper = document.querySelector(".music_photo .poster img"),
   audioName = document.querySelector(".music_photo .caption h4"),
   audioArtist = document.querySelector(".music_photo .caption p"),
+  playPauseBtn = document.querySelector(".play"),
   mainAudio = document.querySelector("#main-audio");
-let musicIndex = 1;
+let musicIndex = 4;
 window.addEventListener("load", () => {
   loadMusic(musicIndex);
+});
+playPauseBtn.addEventListener("click", () => {
+  const isMusicPaused = container.contains("paused");
+  isMusicPaused ? pauseMusic() : playMusic();
 });
 function loadMusic(indexNum) {
   imgWrapper.src = `Images/${musicList[indexNum].poster}.jpg`;
@@ -56,4 +62,8 @@ function loadMusic(indexNum) {
     musicList[indexNum].name + " - " + musicList[indexNum].artist;
   audioArtist.innerHTML = musicList[indexNum].artist;
   mainAudio.src = `sounds/${musicList[indexNum].audioSrc}.mp3`;
+}
+function playMusic() {
+  container.classList.add("paused");
+  mainAudio.play();
 }
