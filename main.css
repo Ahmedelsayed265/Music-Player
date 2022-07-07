@@ -347,9 +347,13 @@ body {
   height: 65px;
 }
 
-.container .list_container .list_flow .link.active, .container .list_container .list_flow .link:hover {
+.container .list_container .list_flow .link.active {
   background-color: #e0e0e0;
   border-color: #fe6b01;
+}
+
+.container .list_container .list_flow .link:hover {
+  background-color: #e0e0e0;
 }
 
 .container .list_container .list_flow .link .img {

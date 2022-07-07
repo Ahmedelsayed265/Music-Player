@@ -122,10 +122,10 @@ body {
         @include centerFlex();
         width: 30%;
         height: 100%;
-        .i1{
+        .i1 {
           margin-right: 15px;
         }
-        .i2{
+        .i2 {
           margin-left: 15px;
         }
         .play {
@@ -169,10 +169,12 @@ body {
         padding: 10px;
         display: flex;
         border-left: 4px solid transparent;
-        &.active,
-        &:hover {
+        &.active {
           background-color: $gray_color;
           border-color: $orange_color;
+        }
+        &:hover {
+          background-color: $gray_color;
         }
         height: 65px;
         .img {

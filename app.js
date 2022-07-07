@@ -47,6 +47,7 @@ const container = document.querySelector(".container"),
   audioName = document.querySelector(".music_photo .caption h4"),
   audioArtist = document.querySelector(".music_photo .caption p"),
   playPauseBtn = document.querySelector(".play_btn"),
+  links = document.querySelectorAll(".link"),
   mainAudio = document.querySelector("#main-audio");
 let musicIndex = 0;
 window.addEventListener("load", () => {
@@ -73,4 +74,13 @@ function pauseMusic() {
   mainAudio.pause();
   document.querySelector(".play_btn i").innerHTML = "play_arrow";
 }
-
+for (let i = 0; i < links.length; i++) {
+  links[i].addEventListener("click", () => {
+    loadMusic(i);
+    for (let index = 0; index < links.length; index++) {
+      links[index].classList.remove("active");
+    }
+    links[i].classList.add("active");
+    playMusic();
+  });
+}
