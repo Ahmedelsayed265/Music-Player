@@ -76,11 +76,11 @@ function pauseMusic() {
 }
 for (let i = 0; i < links.length; i++) {
   links[i].addEventListener("click", () => {
-    loadMusic(i);
     for (let index = 0; index < links.length; index++) {
       links[index].classList.remove("active");
     }
     links[i].classList.add("active");
+    loadMusic(i);
     playMusic();
   });
 }
