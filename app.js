@@ -48,7 +48,7 @@ const container = document.querySelector(".container"),
   audioArtist = document.querySelector(".music_photo .caption p"),
   playPauseBtn = document.querySelector(".play_btn"),
   mainAudio = document.querySelector("#main-audio");
-let musicIndex = 5;
+let musicIndex = 0;
 window.addEventListener("load", () => {
   loadMusic(musicIndex);
 });
@@ -66,9 +66,11 @@ function loadMusic(indexNum) {
 function playMusic() {
   container.classList.add("paused");
   mainAudio.play();
+  document.querySelector(".play_btn i").innerHTML = "pause";
 }
 function pauseMusic() {
   container.classList.remove("paused");
   mainAudio.pause();
+  document.querySelector(".play_btn i").innerHTML = "play_arrow";
 }
 
