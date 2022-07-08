@@ -95,7 +95,7 @@ function nextMusic() {
   for (let j = 0; j < links.length; j++) {
     links[j].classList.remove("active");
   }
-  links[musicIndex].classList.add("active")
+  links[musicIndex].classList.add("active");
 }
 function previousMusic() {
   musicIndex--;
@@ -104,7 +104,7 @@ function previousMusic() {
   for (let j = 0; j < links.length; j++) {
     links[j].classList.remove("active");
   }
-  links[musicIndex].classList.add("active")
+  links[musicIndex].classList.add("active");
 }
 for (let i = 0; i < links.length; i++) {
   links[i].addEventListener("click", () => {
