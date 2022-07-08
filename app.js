@@ -41,12 +41,20 @@ const musicList = [
     poster: "poster-7",
     audioSrc: "file-7",
   },
+  {
+    name: "Harleys In Hawaii",
+    artist: "katy perry",
+    poster: "poster-8",
+    audioSrc: "file-8",
+  },
 ];
 const container = document.querySelector(".container"),
   imgWrapper = document.querySelector(".music_photo .poster img"),
   audioName = document.querySelector(".music_photo .caption h4"),
   audioArtist = document.querySelector(".music_photo .caption p"),
   playPauseBtn = document.querySelector(".play_btn"),
+  previousBtn = document.querySelector(".prev_btn"),
+  nextBtn = document.querySelector(".next_btn"),
   links = document.querySelectorAll(".link"),
   mainAudio = document.querySelector("#main-audio");
 let musicIndex = 0;
@@ -56,6 +64,12 @@ window.addEventListener("load", () => {
 playPauseBtn.addEventListener("click", () => {
   let isMusicPaused = container.classList.contains("paused");
   isMusicPaused ? pauseMusic() : playMusic();
+});
+nextBtn.addEventListener("click", () => {
+  nextMusic();
+});
+previousBtn.addEventListener("click", () => {
+  previousMusic();
 });
 function loadMusic(indexNum) {
   imgWrapper.src = `Images/${musicList[indexNum].poster}.jpg`;
@@ -73,6 +87,24 @@ function pauseMusic() {
   container.classList.remove("paused");
   mainAudio.pause();
   document.querySelector(".play_btn i").innerHTML = "play_arrow";
+}
+function nextMusic() {
+  musicIndex++;
+  loadMusic(musicIndex);
+  playMusic();
+  for (let j = 0; j < links.length; j++) {
+    links[j].classList.remove("active");
+  }
+  links[musicIndex].classList.add("active")
+}
+function previousMusic() {
+  musicIndex--;
+  loadMusic(musicIndex);
+  playMusic();
+  for (let j = 0; j < links.length; j++) {
+    links[j].classList.remove("active");
+  }
+  links[musicIndex].classList.add("active")
 }
 for (let i = 0; i < links.length; i++) {
   links[i].addEventListener("click", () => {
