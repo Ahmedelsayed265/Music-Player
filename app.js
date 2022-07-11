@@ -58,6 +58,7 @@ const container = document.querySelector(".container"),
   links = document.querySelectorAll(".link"),
   mainAudio = document.querySelector("#main-audio");
 let musicIndex = 0;
+/////========Events==========/////
 window.addEventListener("load", () => {
   loadMusic(musicIndex);
 });
@@ -71,6 +72,21 @@ nextBtn.addEventListener("click", () => {
 previousBtn.addEventListener("click", () => {
   previousMusic();
 });
+//===Music List [Class-LoadMusic-playMusic-update musicIndex]===//
+for (let i = 0; i < links.length; i++) {
+  links[i].addEventListener("click", () => {
+    for (let index = 0; index < links.length; index++) {
+      links[index].classList.remove("active");
+    }
+    links[i].classList.add("active");
+    loadMusic(i);
+    playMusic();
+    musicIndex = i;
+  });
+}
+/////========Events==========/////
+//=========performance fuctions===================//
+//=========Load Music=========//
 function loadMusic(indexNum) {
   imgWrapper.src = `Images/${musicList[indexNum].poster}.jpg`;
   audioName.innerHTML =
@@ -78,6 +94,7 @@ function loadMusic(indexNum) {
   audioArtist.innerHTML = musicList[indexNum].artist;
   mainAudio.src = `sounds/${musicList[indexNum].audioSrc}.mp3`;
 }
+//=========play & pause functions====//
 function playMusic() {
   container.classList.add("paused");
   mainAudio.play();
@@ -88,6 +105,8 @@ function pauseMusic() {
   mainAudio.pause();
   document.querySelector(".play_btn i").innerHTML = "play_arrow";
 }
+//=========play & pause functions====//
+//===Next Function [update musicIndex-LoadMusic-playMusic-Class]===//
 function nextMusic() {
   musicIndex++;
   loadMusic(musicIndex);
@@ -97,6 +116,7 @@ function nextMusic() {
   }
   links[musicIndex].classList.add("active");
 }
+//===Previous Function [update musicIndex-LoadMusic-playMusic-Class]===//
 function previousMusic() {
   musicIndex--;
   loadMusic(musicIndex);
@@ -106,13 +126,4 @@ function previousMusic() {
   }
   links[musicIndex].classList.add("active");
 }
-for (let i = 0; i < links.length; i++) {
-  links[i].addEventListener("click", () => {
-    for (let index = 0; index < links.length; index++) {
-      links[index].classList.remove("active");
-    }
-    links[i].classList.add("active");
-    loadMusic(i);
-    playMusic();
-  });
-}
+//=========performance fuctions===================//
