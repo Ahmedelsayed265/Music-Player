@@ -68,6 +68,7 @@ playPauseBtn.addEventListener("click", () => {
 });
 nextBtn.addEventListener("click", () => {
   nextMusic();
+  console.log(musicIndex);
 });
 previousBtn.addEventListener("click", () => {
   previousMusic();
@@ -109,6 +110,9 @@ function pauseMusic() {
 //===Next Function [update musicIndex-LoadMusic-playMusic-Class]===//
 function nextMusic() {
   musicIndex++;
+  musicIndex > musicList.length - 1
+    ? (musicIndex = 0)
+    : (musicIndex = musicIndex);
   loadMusic(musicIndex);
   playMusic();
   for (let j = 0; j < links.length; j++) {
@@ -119,6 +123,9 @@ function nextMusic() {
 //===Previous Function [update musicIndex-LoadMusic-playMusic-Class]===//
 function previousMusic() {
   musicIndex--;
+  musicIndex < 0
+    ? (musicIndex = musicList.length - 1)
+    : (musicIndex = musicIndex);
   loadMusic(musicIndex);
   playMusic();
   for (let j = 0; j < links.length; j++) {
