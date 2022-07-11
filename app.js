@@ -78,9 +78,8 @@ mainAudio.addEventListener("timeupdate", (e) => {
   const currentTime = e.target.currentTime;
   const duration = e.target.duration;
   let progressWidth = (currentTime / duration) * 100;
-  console.log(progressWidth);
+  progressBar.style.width = `${progressWidth}%`;
 });
-//===Music List [Class-LoadMusic-playMusic-update musicIndex]===//
 for (let i = 0; i < links.length; i++) {
   links[i].addEventListener("click", () => {
     for (let index = 0; index < links.length; index++) {
