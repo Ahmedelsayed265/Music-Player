@@ -162,6 +162,8 @@ body {
 
 .container .Player_container .progress_area .progress_bar .bar span i {
   display: inline-block;
+  position: absolute;
+  right: 0;
   width: 8px;
   height: 8px;
   border-radius: 50%;

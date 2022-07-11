@@ -56,6 +56,8 @@ const container = document.querySelector(".container"),
   previousBtn = document.querySelector(".prev_btn"),
   nextBtn = document.querySelector(".next_btn"),
   progressBar = document.querySelector(".pro_bar"),
+  currentTime = document.querySelector(".progress .current_time"),
+  progressBar = document.querySelector(".progress .duration"),
   links = document.querySelectorAll(".link"),
   mainAudio = document.querySelector("#main-audio");
 let musicIndex = 0;
@@ -69,7 +71,6 @@ playPauseBtn.addEventListener("click", () => {
 });
 nextBtn.addEventListener("click", () => {
   nextMusic();
-  console.log(musicIndex);
 });
 previousBtn.addEventListener("click", () => {
   previousMusic();
@@ -93,8 +94,8 @@ for (let i = 0; i < links.length; i++) {
 }
 /////========Events==========/////
 //=========performance fuctions===================//
-//=========Load Music=========//
 function loadMusic(indexNum) {
+  //=========Load Music Data=========//
   imgWrapper.src = `Images/${musicList[indexNum].poster}.jpg`;
   audioName.innerHTML =
     musicList[indexNum].name + " - " + musicList[indexNum].artist;
