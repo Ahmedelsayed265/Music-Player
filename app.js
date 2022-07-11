@@ -55,6 +55,7 @@ const container = document.querySelector(".container"),
   playPauseBtn = document.querySelector(".play_btn"),
   previousBtn = document.querySelector(".prev_btn"),
   nextBtn = document.querySelector(".next_btn"),
+  progressBar = document.querySelector(".pro_bar"),
   links = document.querySelectorAll(".link"),
   mainAudio = document.querySelector("#main-audio");
 let musicIndex = 0;
@@ -72,6 +73,12 @@ nextBtn.addEventListener("click", () => {
 });
 previousBtn.addEventListener("click", () => {
   previousMusic();
+});
+mainAudio.addEventListener("timeupdate", (e) => {
+  const currentTime = e.target.currentTime;
+  const duration = e.target.duration;
+  let progressWidth = (currentTime / duration) * 100;
+  console.log(progressWidth);
 });
 //===Music List [Class-LoadMusic-playMusic-update musicIndex]===//
 for (let i = 0; i < links.length; i++) {
