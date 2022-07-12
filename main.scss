@@ -60,6 +60,15 @@ body {
           border-radius: 2px;
           background-color: $gray_color;
           position: relative;
+          // &:hover{
+          //   height: 6px;
+          //   border-radius: 3px;
+          //   span i{
+          //     width: 10px;
+          //     height: 10px;
+          //     right: -5px;
+          //   }
+          // }
           span {
             position: absolute;
             top: 0;

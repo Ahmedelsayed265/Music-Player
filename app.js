@@ -55,6 +55,7 @@ const container = document.querySelector(".container"),
   playPauseBtn = document.querySelector(".play_btn"),
   previousBtn = document.querySelector(".prev_btn"),
   nextBtn = document.querySelector(".next_btn"),
+  parentProgressBar = document.querySelector(".bar"),
   progressBar = document.querySelector(".pro_bar"),
   musicCurrentTime = document.querySelector(".progress .current_time"),
   musicDuration = document.querySelector(".progress .duration"),
@@ -97,6 +98,35 @@ mainAudio.addEventListener("timeupdate", (e) => {
     progressTimeInSeconds = `0${progressTimeInSeconds}`;
   }
   musicCurrentTime.innerHTML = `${progressTimeInMinutes}:${progressTimeInSeconds}`;
+  //====move to next audio if audio ended======//
+  if (currentTime == duration) {
+    if (musicIndex == musicList.length - 1) {
+      musicIndex = 0;
+      links.forEach((link) => {
+        link.classList.remove("active");
+      });
+      links[musicIndex].classList.add("active");
+      loadMusic(musicIndex);
+      playMusic();
+    }
+    else{
+      musicIndex++;
+      links.forEach((link) => {
+        link.classList.remove("active");
+      });
+      links[musicIndex].classList.add("active");
+      loadMusic(musicIndex);
+      playMusic();
+    }
+  }
+});
+//==========Update Time and width by click the bar=======//
+parentProgressBar.addEventListener("click", (e) => {
+  let progressWidthValue = parentProgressBar.clientWidth,
+    clickedOffsetX = e.offsetX;
+  let totalDuration = mainAudio.duration;
+  mainAudio.currentTime = (clickedOffsetX / progressWidthValue) * totalDuration;
+  playMusic();
 });
 for (let i = 0; i < links.length; i++) {
   links[i].addEventListener("click", () => {
