@@ -56,8 +56,8 @@ const container = document.querySelector(".container"),
   previousBtn = document.querySelector(".prev_btn"),
   nextBtn = document.querySelector(".next_btn"),
   progressBar = document.querySelector(".pro_bar"),
-  currentTime = document.querySelector(".progress .current_time"),
-  progressBar = document.querySelector(".progress .duration"),
+  musicCurrentTime = document.querySelector(".progress .current_time"),
+  musicDuration = document.querySelector(".progress .duration"),
   links = document.querySelectorAll(".link"),
   mainAudio = document.querySelector("#main-audio");
 let musicIndex = 0;
@@ -80,6 +80,23 @@ mainAudio.addEventListener("timeupdate", (e) => {
   const duration = e.target.duration;
   let progressWidth = (currentTime / duration) * 100;
   progressBar.style.width = `${progressWidth}%`;
+  mainAudio.addEventListener("loadeddata", () => {
+    //=====update Total Time=====//
+    let audioDuration = mainAudio.duration;
+    let durationInMinutes = Math.floor(audioDuration / 60);
+    let durationInSeconds = Math.floor(audioDuration % 60);
+    if (durationInSeconds < 10) {
+      durationInSeconds = `0${durationInSeconds}`;
+    }
+    musicDuration.innerHTML = `${durationInMinutes}:${durationInSeconds}`;
+  });
+  //=====update current Time=====//
+  let progressTimeInMinutes = Math.floor(currentTime / 60);
+  let progressTimeInSeconds = Math.floor(currentTime % 60);
+  if (progressTimeInSeconds < 10) {
+    progressTimeInSeconds = `0${progressTimeInSeconds}`;
+  }
+  musicCurrentTime.innerHTML = `${progressTimeInMinutes}:${progressTimeInSeconds}`;
 });
 for (let i = 0; i < links.length; i++) {
   links[i].addEventListener("click", () => {
