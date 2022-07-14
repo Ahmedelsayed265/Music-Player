@@ -118,7 +118,7 @@ body {
       }
       .middle_controls {
         @include centerFlex();
-        width: 30%;
+        width: 40%;
         height: 100%;
         .i1 {
           margin-right: 15px;
@@ -211,6 +211,17 @@ body {
     grid-template-columns: 1fr 0;
     .list_container {
       display: none;
+    }
+    .Player_container {
+      .player_options {
+        .option button i {
+          font-size: 24px;
+        }
+        .middle_controls .play{
+          min-height: 38px;
+          min-width: 38px;
+        }
+      }
     }
   }
 }

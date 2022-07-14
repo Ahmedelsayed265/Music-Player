@@ -253,7 +253,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 30%;
+  width: 40%;
   height: 100%;
 }
 
@@ -395,6 +395,13 @@ body {
   }
   .container .list_container {
     display: none;
+  }
+  .container .Player_container .player_options .option button i {
+    font-size: 24px;
+  }
+  .container .Player_container .player_options .middle_controls .play {
+    min-height: 38px;
+    min-width: 38px;
   }
 }
 /*# sourceMappingURL=main.css.map */
