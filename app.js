@@ -55,14 +55,15 @@ const container = document.querySelector(".container"),
   playPauseBtn = document.querySelector(".play_btn"),
   previousBtn = document.querySelector(".prev_btn"),
   nextBtn = document.querySelector(".next_btn"),
-  repeatBtn = document.querySelector(".repeat"),
+  repeatBtn = document.querySelector(".repeat i"),
   parentProgressBar = document.querySelector(".bar"),
   progressBar = document.querySelector(".pro_bar"),
   musicCurrentTime = document.querySelector(".progress .current_time"),
   musicDuration = document.querySelector(".progress .duration"),
   links = document.querySelectorAll(".link"),
   mainAudio = document.querySelector("#main-audio");
-let musicIndex = 0;
+let musicIndex = 0,
+  Text = repeatBtn.innerText;
 /////========Events==========/////
 window.addEventListener("load", () => {
   loadMusic(musicIndex);
@@ -77,6 +78,41 @@ nextBtn.addEventListener("click", () => {
 previousBtn.addEventListener("click", () => {
   previousMusic();
 });
+//*===========repeatation event==============*//
+// repeatBtn.addEventListener("click", () => {
+//   switch (Text) {
+//     case "repeat":
+//       Text.innerText = "repeat_one";
+//       break;
+//     case "repeat_one":
+//       Text.innerText = "shuffle";
+//       break;
+//     case: "shuffle";
+//       Text.innerText = "repeat";
+//       break;
+//   }
+// });
+// mainAudio.addEventListener("ended", () => {
+//   switch (Text) {
+//     case "repeat":
+//       nextMusic();
+//       break;
+//     case "repeat_one":
+//       mainAudio.currentTime = 0;
+//       loadMusic(musicIndex);
+//       break;
+//     case "shuffle":
+//       let randomIndex = Math.floor(Math.random() * (musicList.length - 1));
+//       do {
+//         randomIndex = Math.floor(Math.random() * (musicList.length - 1));
+//       } while ((musicIndex = randomIndex));
+//       musicIndex = randomIndex;
+//       loadMusic(musicIndex);
+//       playMusic();
+//       break;
+//   }
+// });
+//*===========repeatation event==============*//
 mainAudio.addEventListener("timeupdate", (e) => {
   const currentTime = e.target.currentTime;
   const duration = e.target.duration;
@@ -109,8 +145,7 @@ mainAudio.addEventListener("timeupdate", (e) => {
       links[musicIndex].classList.add("active");
       loadMusic(musicIndex);
       playMusic();
-    }
-    else{
+    } else {
       musicIndex++;
       links.forEach((link) => {
         link.classList.remove("active");
@@ -129,6 +164,7 @@ parentProgressBar.addEventListener("click", (e) => {
   mainAudio.currentTime = (clickedOffsetX / progressWidthValue) * totalDuration;
   playMusic();
 });
+//========load music by music list=========//
 for (let i = 0; i < links.length; i++) {
   links[i].addEventListener("click", () => {
     for (let index = 0; index < links.length; index++) {
