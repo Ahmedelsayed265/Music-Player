@@ -55,15 +55,14 @@ const container = document.querySelector(".container"),
   playPauseBtn = document.querySelector(".play_btn"),
   previousBtn = document.querySelector(".prev_btn"),
   nextBtn = document.querySelector(".next_btn"),
-  repeatBtn = document.querySelector(".repeat i"),
+  repeatBtn = document.querySelector("#repeatation"),
   parentProgressBar = document.querySelector(".bar"),
   progressBar = document.querySelector(".pro_bar"),
   musicCurrentTime = document.querySelector(".progress .current_time"),
   musicDuration = document.querySelector(".progress .duration"),
   links = document.querySelectorAll(".link"),
   mainAudio = document.querySelector("#main-audio");
-let musicIndex = 0,
-  Text = repeatBtn.innerText;
+let musicIndex = 0;
 window.addEventListener("load", () => {
   loadMusic(musicIndex);
 });
@@ -77,41 +76,23 @@ nextBtn.addEventListener("click", () => {
 previousBtn.addEventListener("click", () => {
   previousMusic();
 });
-//*===========repeatation event==============*//
-// repeatBtn.addEventListener("click", () => {
-//   switch (Text) {
-//     case "repeat":
-//       Text.innerText = "repeat_one";
-//       break;
-//     case "repeat_one":
-//       Text.innerText = "shuffle";
-//       break;
-//     case: "shuffle";
-//       Text.innerText = "repeat";
-//       break;
-//   }
-// });
-// mainAudio.addEventListener("ended", () => {
-//   switch (Text) {
-//     case "repeat":
-//       nextMusic();
-//       break;
-//     case "repeat_one":
-//       mainAudio.currentTime = 0;
-//       loadMusic(musicIndex);
-//       break;
-//     case "shuffle":
-//       let randomIndex = Math.floor(Math.random() * (musicList.length - 1));
-//       do {
-//         randomIndex = Math.floor(Math.random() * (musicList.length - 1));
-//       } while ((musicIndex = randomIndex));
-//       musicIndex = randomIndex;
-//       loadMusic(musicIndex);
-//       playMusic();
-//       break;
-//   }
-// });
-//*===========repeatation event==============*//
+repeatBtn.addEventListener("click", () => {
+  let Text = repeatBtn.innerHTML;
+  switch (Text) {
+    case "repeat":
+      repeatBtn.innerHTML = "repeat_one";
+      repeatBtn.setAttribute("title", "Song Looped");
+      break;
+    case "repeat_one":
+      repeatBtn.innerHTML = "shuffle";
+      repeatBtn.setAttribute("title", "Playback Shuffle");
+      break;
+    case "shuffle":
+      repeatBtn.innerHTML = "repeat";
+      repeatBtn.setAttribute("title", "Playlist Looped");
+      break;
+  }
+});
 mainAudio.addEventListener("timeupdate", (e) => {
   const currentTime = e.target.currentTime;
   const duration = e.target.duration;
@@ -132,25 +113,27 @@ mainAudio.addEventListener("timeupdate", (e) => {
     progressTimeInSeconds = `0${progressTimeInSeconds}`;
   }
   musicCurrentTime.innerHTML = `${progressTimeInMinutes}:${progressTimeInSeconds}`;
-  //====move to next audio if audio ended======//
-  if (currentTime == duration) {
-    if (musicIndex == musicList.length - 1) {
-      musicIndex = 0;
-      links.forEach((link) => {
-        link.classList.remove("active");
-      });
-      links[musicIndex].classList.add("active");
+});
+mainAudio.addEventListener("ended", () => {
+  let Text = repeatBtn.innerHTML;
+  switch (Text) {
+    case "repeat":
+      nextMusic();
+      break;
+    case "repeat_one":
+      mainAudio.currentTime = 0;
+      playMusic();
+      break;
+    case "shuffle":
+      let randomIndex = Math.floor(Math.random() * (musicList.length - 1));
+      do {
+        randomIndex = Math.floor(Math.random() * (musicList.length - 1));
+      } while (musicIndex == randomIndex);
+      musicIndex = randomIndex;
       loadMusic(musicIndex);
       playMusic();
-    } else {
-      musicIndex++;
-      links.forEach((link) => {
-        link.classList.remove("active");
-      });
-      links[musicIndex].classList.add("active");
-      loadMusic(musicIndex);
-      playMusic();
-    }
+      playListClass(musicIndex);
+      break;
   }
 });
 parentProgressBar.addEventListener("click", (e) => {
@@ -162,15 +145,13 @@ parentProgressBar.addEventListener("click", (e) => {
 });
 for (let i = 0; i < links.length; i++) {
   links[i].addEventListener("click", () => {
-    links.forEach((link) => {
-      link.classList.remove("active");
-    });
-    links[i].classList.add("active");
+    playListClass(i)
     loadMusic(i);
     playMusic();
     musicIndex = i;
   });
 }
+//***************************************************//
 function loadMusic(indexNum) {
   imgWrapper.src = `Images/${musicList[indexNum].poster}.jpg`;
   audioName.innerHTML =
@@ -179,13 +160,13 @@ function loadMusic(indexNum) {
   mainAudio.src = `sounds/${musicList[indexNum].audioSrc}.mp3`;
 }
 function playMusic() {
-  container.classList.add("paused");
   mainAudio.play();
+  container.classList.add("paused");
   document.querySelector(".play_btn i").innerHTML = "pause";
 }
 function pauseMusic() {
-  container.classList.remove("paused");
   mainAudio.pause();
+  container.classList.remove("paused");
   document.querySelector(".play_btn i").innerHTML = "play_arrow";
 }
 function nextMusic() {
@@ -195,10 +176,7 @@ function nextMusic() {
     : (musicIndex = musicIndex);
   loadMusic(musicIndex);
   playMusic();
-  for (let j = 0; j < links.length; j++) {
-    links[j].classList.remove("active");
-  }
-  links[musicIndex].classList.add("active");
+  playListClass(musicIndex);
 }
 function previousMusic() {
   musicIndex--;
@@ -207,8 +185,11 @@ function previousMusic() {
     : (musicIndex = musicIndex);
   loadMusic(musicIndex);
   playMusic();
-  for (let j = 0; j < links.length; j++) {
-    links[j].classList.remove("active");
-  }
-  links[musicIndex].classList.add("active");
+  playListClass(musicIndex);
+}
+function playListClass(index) {
+  links.forEach((link) => {
+    link.classList.remove("active");
+  });
+  links[index].classList.add("active");
 }
