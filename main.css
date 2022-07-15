@@ -35,6 +35,11 @@ body {
           justify-content: center;
 }
 
+*.grid {
+  -ms-grid-columns: 1fr 0fr !important;
+      grid-template-columns: 1fr 0fr !important;
+}
+
 .container {
   background: #f4f5f9;
   width: 60%;
@@ -54,7 +59,7 @@ body {
 
 .container .Player_container .music_photo {
   width: 100%;
-  height: 77%;
+  height: 54.2867vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -66,7 +71,7 @@ body {
 
 .container .Player_container .music_photo .poster {
   width: 100%;
-  height: 80%;
+  height: 83%;
 }
 
 .container .Player_container .music_photo .poster img {
@@ -78,7 +83,7 @@ body {
 
 .container .Player_container .music_photo .caption {
   width: 100%;
-  height: 20%;
+  height: 17%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -424,6 +429,9 @@ body {
   }
   .container .list_container {
     display: none;
+  }
+  .container .Player_container .music_photo {
+    height: 75%;
   }
   .container .Player_container .player_options .option button i {
     font-size: 24px;

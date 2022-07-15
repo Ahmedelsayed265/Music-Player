@@ -4,6 +4,9 @@ body {
   height: 100vh;
   @include centerFlex();
 }
+*.grid {
+  grid-template-columns: 1fr 0fr !important;
+}
 .container {
   background: $white_color;
   width: 60%;
@@ -16,12 +19,12 @@ body {
     padding: 15px;
     .music_photo {
       width: 100%;
-      height: 77%;
+      height: 54.2867vh;
       display: flex;
       flex-direction: column;
       .poster {
         width: 100%;
-        height: 80%;
+        height: 83%;
         img {
           width: 100%;
           height: 100%;
@@ -30,7 +33,7 @@ body {
       }
       .caption {
         width: 100%;
-        height: 20%;
+        height: 17%;
         @include centerFlex();
         flex-direction: column;
         h4 {
@@ -229,6 +232,9 @@ body {
       display: none;
     }
     .Player_container {
+      .music_photo {
+        height: 75%;
+      }
       .player_options {
         .option button i {
           font-size: 24px;
