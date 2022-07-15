@@ -56,11 +56,15 @@ const container = document.querySelector(".container"),
   previousBtn = document.querySelector(".prev_btn"),
   nextBtn = document.querySelector(".next_btn"),
   repeatBtn = document.querySelector("#repeatation"),
+  favBtn = document.querySelector(".fav_btn"),
   parentProgressBar = document.querySelector(".bar"),
   progressBar = document.querySelector(".pro_bar"),
   musicCurrentTime = document.querySelector(".progress .current_time"),
   musicDuration = document.querySelector(".progress .duration"),
+  favList = document.querySelector(".fav_list"),
+  lists = document.querySelectorAll(".list"),
   links = document.querySelectorAll(".link"),
+  navs = document.querySelectorAll(".navigation span"),
   mainAudio = document.querySelector("#main-audio");
 let musicIndex = 0;
 window.addEventListener("load", () => {
@@ -145,12 +149,41 @@ parentProgressBar.addEventListener("click", (e) => {
 });
 for (let i = 0; i < links.length; i++) {
   links[i].addEventListener("click", () => {
-    playListClass(i)
+    playListClass(i);
     loadMusic(i);
     playMusic();
     musicIndex = i;
   });
 }
+for (let i = 0; i < navs.length; i++) {
+  navs[i].addEventListener("click", () => {
+    for (let j = 0; j < navs.length; j++) {
+      navs[j].classList.remove("active");
+      lists[j].classList.add("hide");
+    }
+    navs[i].classList.add("active");
+    lists[i].classList.remove("hide");
+  });
+}
+favBtn.addEventListener("click", () => {
+  favType = favBtn.querySelector("i").innerHTML;
+  switch (favType) {
+    case "favorite_border":
+      favBtn.querySelector("i").innerHTML = "favorite";
+      let link = `<div class="link">
+      <div class="img">
+      <img src="Images/${musicList[musicIndex].poster}.jpg" alt="">
+      </div>
+      <div class="cap">
+          <h5>${musicList[musicIndex].name}</h5>
+          <p>${musicList[musicIndex].artist}</p>
+      </div>`
+      break;
+    case "favorite":
+      favBtn.querySelector("i").innerHTML = "favorite_border";
+      break;
+  }
+});
 //***************************************************//
 function loadMusic(indexNum) {
   imgWrapper.src = `Images/${musicList[indexNum].poster}.jpg`;

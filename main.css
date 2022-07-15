@@ -326,16 +326,34 @@ body {
   color: #000000;
 }
 
-.container .list_container .list_flow {
+.container .list_container .navigation span.active {
+  position: relative;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.container .list_container .navigation span.active::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background-color: #fe6b01;
+}
+
+.container .list_container .list_flow,
+.container .list_container .fav_list {
   height: 400px;
   overflow-y: scroll;
 }
 
-.container .list_container .list_flow::-webkit-scrollbar {
+.container .list_container .list_flow::-webkit-scrollbar,
+.container .list_container .fav_list::-webkit-scrollbar {
   width: 0;
 }
 
-.container .list_container .list_flow .link {
+.container .list_container .list_flow .link,
+.container .list_container .fav_list .link {
   cursor: pointer;
   padding: 10px;
   display: -webkit-box;
@@ -345,39 +363,50 @@ body {
   height: 65px;
 }
 
-.container .list_container .list_flow .link.active {
+.container .list_container .list_flow .link.active,
+.container .list_container .fav_list .link.active {
   background-color: #e0e0e0;
   border-color: #fe6b01;
 }
 
-.container .list_container .list_flow .link:hover {
+.container .list_container .list_flow .link:hover,
+.container .list_container .fav_list .link:hover {
   background-color: #e0e0e0;
 }
 
-.container .list_container .list_flow .link .img {
+.container .list_container .list_flow .link .img,
+.container .list_container .fav_list .link .img {
   width: 45px;
   height: 45px;
 }
 
-.container .list_container .list_flow .link .img img {
+.container .list_container .list_flow .link .img img,
+.container .list_container .fav_list .link .img img {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-.container .list_container .list_flow .link .cap {
+.container .list_container .list_flow .link .cap,
+.container .list_container .fav_list .link .cap {
   margin-left: 15px;
 }
 
-.container .list_container .list_flow .link .cap h5 {
+.container .list_container .list_flow .link .cap h5,
+.container .list_container .fav_list .link .cap h5 {
   color: #000000;
   margin-bottom: 5px;
 }
 
-.container .list_container .list_flow .link .cap p {
+.container .list_container .list_flow .link .cap p,
+.container .list_container .fav_list .link .cap p {
   font-size: 14px;
   color: #77787c;
+}
+
+*.hide {
+  display: none;
 }
 
 @media (max-width: 997px) {
