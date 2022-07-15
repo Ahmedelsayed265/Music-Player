@@ -98,12 +98,11 @@ repeatBtn.addEventListener("click", () => {
       break;
   }
 });
-// openListBtn.addEventListener("click", () => {
-// document.querySelector(".list_container").classList.toggle("hide");
-// container.classList.toggle("grid");
-//   document.querySelector(".Player_container").classList.toggle("hide_min");
-//   container.classList.toggle("grid_min");
-// });
+openListBtn.addEventListener("click", () => {
+  document.querySelector(".list_container").classList.toggle("hide");
+  container.classList.toggle("grid");
+  document.querySelector(".Player_container").classList.toggle("grid_min");
+});
 mainAudio.addEventListener("timeupdate", (e) => {
   const currentTime = e.target.currentTime;
   const duration = e.target.duration;
