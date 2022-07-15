@@ -66,6 +66,7 @@ const container = document.querySelector(".container"),
   lists = document.querySelectorAll(".list"),
   links = document.querySelectorAll(".link"),
   navs = document.querySelectorAll(".navigation span"),
+  close = document.querySelector("#close");
   mainAudio = document.querySelector("#main-audio");
 let musicIndex = 0;
 window.addEventListener("load", () => {
@@ -102,6 +103,10 @@ openListBtn.addEventListener("click", () => {
   document.querySelector(".list_container").classList.toggle("hide");
   container.classList.toggle("grid");
   document.querySelector(".Player_container").classList.toggle("grid_min");
+});
+close.addEventListener("click", () => {
+  document.querySelector(".Player_container").classList.remove("grid_min");
+  document.querySelector(".list_container").classList.remove("hide");
 });
 mainAudio.addEventListener("timeupdate", (e) => {
   const currentTime = e.target.currentTime;
