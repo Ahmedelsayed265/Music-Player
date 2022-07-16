@@ -176,31 +176,6 @@ for (let i = 0; i < navs.length; i++) {
     lists[i].classList.remove("hide");
   });
 }
-// let favArr = [];
-// favBtn.addEventListener("click", () => {
-//   favType = favBtn.querySelector("i").innerHTML;
-//   switch (favType) {
-//     case "favorite_border":
-//       favBtn.querySelector("i").innerHTML = "favorite";
-//       let link = `<div class="link">
-//       <div class="img">
-//       <img src="Images/${musicList[musicIndex].poster}.jpg" alt="">
-//       </div>
-//       <div class="cap">
-//           <h5>${musicList[musicIndex].name}</h5>
-//           <p>${musicList[musicIndex].artist}</p>
-//       </div>`;
-//       favArr.push(link);
-//       for (let i = 0; i < favArr.length; i++) {
-//         favList.innerHTML += favArr[i];
-//       }
-//       break;
-//     case "favorite":
-//       favBtn.querySelector("i").innerHTML = "favorite_border";
-//       favArr = [];
-//       break;
-//   }
-// });
 //***************************************************//
 function loadMusic(indexNum) {
   imgWrapper.src = `Images/${musicList[indexNum].poster}.jpg`;
