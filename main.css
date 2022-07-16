@@ -429,9 +429,6 @@ body {
     -ms-grid-columns: 1fr !important;
         grid-template-columns: 1fr !important;
   }
-  .container.grid_min .list_container {
-    display: none;
-  }
   .container .Player_container {
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;

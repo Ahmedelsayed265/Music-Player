@@ -229,9 +229,6 @@ body {
     width: 100%;
     height: 100%;
     grid-template-columns: 1fr !important;
-    &.grid_min .list_container {
-      display: none;
-    }
     .Player_container {
       grid-column: 1/2;
       &.grid_min {
