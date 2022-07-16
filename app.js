@@ -67,7 +67,7 @@ const container = document.querySelector(".container"),
   links = document.querySelectorAll(".link"),
   navs = document.querySelectorAll(".navigation span"),
   close = document.querySelector("#close");
-  mainAudio = document.querySelector("#main-audio");
+mainAudio = document.querySelector("#main-audio");
 let musicIndex = 0;
 window.addEventListener("load", () => {
   loadMusic(musicIndex);
