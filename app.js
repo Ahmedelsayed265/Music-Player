@@ -47,6 +47,12 @@ const musicList = [
     poster: "poster-8",
     audioSrc: "file-8",
   },
+  {
+    name: "El Qahera",
+    artist: "Donia Waelll & El Waili",
+    poster: "poster-9",
+    audioSrc: "file-9",
+  },
 ];
 const container = document.querySelector(".container"),
   imgWrapper = document.querySelector(".music_photo .poster img"),
