@@ -58,6 +58,8 @@ const container = document.querySelector(".container"),
   repeatBtn = document.querySelector("#repeatation"),
   favBtn = document.querySelector(".fav_btn"),
   openListBtn = document.querySelector(".queue"),
+  volumeBtn = document.querySelector("#volume"),
+  volumeRange = document.querySelector("#vol_range"),
   parentProgressBar = document.querySelector(".bar"),
   progressBar = document.querySelector(".pro_bar"),
   musicCurrentTime = document.querySelector(".progress .current_time"),
@@ -69,6 +71,7 @@ const container = document.querySelector(".container"),
   close = document.querySelector("#close");
 mainAudio = document.querySelector("#main-audio");
 let musicIndex = 0;
+mainAudio.volume = 0.5;
 window.addEventListener("load", () => {
   loadMusic(musicIndex);
 });
@@ -98,6 +101,12 @@ repeatBtn.addEventListener("click", () => {
       repeatBtn.setAttribute("title", "Playlist Looped");
       break;
   }
+});
+volumeBtn.addEventListener("click", () => {
+  muteSound();
+});
+volumeRange.addEventListener("change", () => {
+  changeVolume();
 });
 openListBtn.addEventListener("click", () => {
   document.querySelector(".list_container").classList.toggle("hide");
@@ -217,4 +226,29 @@ function playListClass(index) {
     link.classList.remove("active");
   });
   links[index].classList.add("active");
+}
+function muteSound() {
+  let voltype = volumeBtn.innerHTML;
+  switch (voltype) {
+    case "volume_up":
+      volumeBtn.innerHTML = "volume_off";
+      mainAudio.volume = 0;
+      volumeRange.value = 0;
+      break;
+    case "volume_off":
+      volumeBtn.innerHTML = "volume_up";
+      mainAudio.volume = 1;
+      volumeRange.value = 100;
+      break;
+  }
+}
+function changeVolume() {
+  mainAudio.volume = volumeRange.value / 100;
+  if (mainAudio.volume == 0) {
+    volumeBtn.innerHTML = "volume_off";
+  } else if (mainAudio.volume < 0.5) {
+    volumeBtn.innerHTML = "volume_down";
+  } else {
+    volumeBtn.innerHTML = "volume_up";
+  }
 }
