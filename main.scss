@@ -112,23 +112,48 @@ body {
             color: $orange_color;
           }
         }
+        input {
+          width: 100%;
+          -webkit-appearance: none;
+          &::-webkit-slider-runnable-track {
+            height: 4px;
+            background-color: $gray_color;
+            border-radius: 2px;
+            cursor: pointer;
+          }
+          &:focus {
+            outline: none;
+          }
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-top: -3px;
+            background-color: $orange_color;
+          }
+          &::-moz-range-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: $orange_color;
+          }
+        }
       }
       .right_controls {
         @include centerFlex();
         justify-content: start;
-        width: 30%;
+        width: 20%;
         height: 100%;
+        .option {
+          width: calc(100% / 2);
+        }
       }
       .middle_controls {
         @include centerFlex();
         width: 40%;
         height: 100%;
-        .i1 {
-          margin-right: 15px;
-        }
-        .i2 {
-          margin-left: 15px;
-        }
         .play {
           min-width: 40px;
           min-height: 40px;

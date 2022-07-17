@@ -231,6 +231,39 @@ body {
   color: #fe6b01;
 }
 
+.container .Player_container .player_options .option input {
+  width: 100%;
+  -webkit-appearance: none;
+}
+
+.container .Player_container .player_options .option input::-webkit-slider-runnable-track {
+  height: 4px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.container .Player_container .player_options .option input:focus {
+  outline: none;
+}
+
+.container .Player_container .player_options .option input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: -3px;
+  background-color: #fe6b01;
+}
+
+.container .Player_container .player_options .option input::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fe6b01;
+}
+
 .container .Player_container .player_options .right_controls {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -244,8 +277,12 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
-  width: 30%;
+  width: 20%;
   height: 100%;
+}
+
+.container .Player_container .player_options .right_controls .option {
+  width: calc(100% / 2);
 }
 
 .container .Player_container .player_options .middle_controls {
@@ -260,14 +297,6 @@ body {
           justify-content: center;
   width: 40%;
   height: 100%;
-}
-
-.container .Player_container .player_options .middle_controls .i1 {
-  margin-right: 15px;
-}
-
-.container .Player_container .player_options .middle_controls .i2 {
-  margin-left: 15px;
 }
 
 .container .Player_container .player_options .middle_controls .play {
