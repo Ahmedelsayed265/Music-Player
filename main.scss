@@ -252,7 +252,7 @@ body {
 @media (max-width: 450px) {
   .container {
     width: 100%;
-    height: 100%;
+    height: inherit;
     grid-template-columns: 1fr !important;
     .Player_container {
       grid-column: 1/2;
@@ -270,9 +270,13 @@ body {
           min-height: 38px;
           min-width: 38px;
         }
+        input{
+          transform: rotate(-90deg);
+        }
       }
     }
     .list_container {
+      height: 90%;
       grid-column: 1/2;
       .list_flow {
         height: 100% !important;
