@@ -70,7 +70,8 @@ const container = document.querySelector(".container"),
   navs = document.querySelectorAll(".navigation span"),
   close = document.querySelector("#close");
 mainAudio = document.querySelector("#main-audio");
-let musicIndex = 0;
+let musicIndex = 0,
+  oldvolume = 0.5;
 mainAudio.volume = 0.5;
 window.addEventListener("load", () => {
   loadMusic(musicIndex);
@@ -117,6 +118,7 @@ close.addEventListener("click", () => {
   document.querySelector(".Player_container").classList.remove("grid_min");
   document.querySelector(".list_container").classList.remove("hide");
 });
+//=======mainAudio events (duration-currenttime-progress-at the end)====//
 mainAudio.addEventListener("timeupdate", (e) => {
   const currentTime = e.target.currentTime;
   const duration = e.target.duration;
@@ -160,6 +162,7 @@ mainAudio.addEventListener("ended", () => {
       break;
   }
 });
+//=====parent Progress bar click change currentTime====//
 parentProgressBar.addEventListener("click", (e) => {
   let progressWidthValue = parentProgressBar.clientWidth,
     clickedOffsetX = e.offsetX;
@@ -167,6 +170,7 @@ parentProgressBar.addEventListener("click", (e) => {
   mainAudio.currentTime = (clickedOffsetX / progressWidthValue) * totalDuration;
   playMusic();
 });
+//========Load music from the playlist========//
 for (let i = 0; i < links.length; i++) {
   links[i].addEventListener("click", () => {
     playListClass(i);
@@ -175,6 +179,7 @@ for (let i = 0; i < links.length; i++) {
     musicIndex = i;
   });
 }
+//========Nav bar (playlist - favourits)======//
 for (let i = 0; i < navs.length; i++) {
   navs[i].addEventListener("click", () => {
     for (let j = 0; j < navs.length; j++) {
@@ -185,7 +190,7 @@ for (let i = 0; i < navs.length; i++) {
     lists[i].classList.remove("hide");
   });
 }
-//***************************************************//
+//********Performing(builtIn)functions********************//
 function loadMusic(indexNum) {
   imgWrapper.src = `Images/${musicList[indexNum].poster}.jpg`;
   audioName.innerHTML =
@@ -193,6 +198,7 @@ function loadMusic(indexNum) {
   audioArtist.innerHTML = musicList[indexNum].artist;
   mainAudio.src = `sounds/${musicList[indexNum].audioSrc}.mp3`;
 }
+//=========Audio(play-pause-next-previous)======//
 function playMusic() {
   mainAudio.play();
   container.classList.add("paused");
@@ -221,25 +227,35 @@ function previousMusic() {
   playMusic();
   playListClass(musicIndex);
 }
+//======Links in the playlist calss===//
 function playListClass(index) {
   links.forEach((link) => {
     link.classList.remove("active");
   });
   links[index].classList.add("active");
 }
+//======Volume Functions========//
 function muteSound() {
   let voltype = volumeBtn.innerHTML;
-  switch (voltype) {
-    case "volume_up":
-      volumeBtn.innerHTML = "volume_off";
-      mainAudio.volume = 0;
-      volumeRange.value = 0;
-      break;
-    case "volume_off":
+  if (voltype == "volume_up" || voltype == "volume_down") {
+    volumeBtn.innerHTML = "volume_off";
+    mainAudio.volume = 0;
+    volumeRange.value = 0;
+  }
+  if (voltype == "volume_off") {
+    if (oldvolume == 0) {
+      mainAudio.volume = 0.5;
       volumeBtn.innerHTML = "volume_up";
-      mainAudio.volume = 1;
-      volumeRange.value = 100;
-      break;
+      volumeRange.value = 50;
+    } else if (oldvolume < 0.5) {
+      mainAudio.volume = oldvolume;
+      volumeBtn.innerHTML = "volume_down";
+      volumeRange.value = oldvolume * 100;
+    } else {
+      mainAudio.volume = oldvolume;
+      volumeBtn.innerHTML = "volume_up";
+      volumeRange.value = oldvolume * 100;
+    }
   }
 }
 function changeVolume() {
@@ -251,4 +267,5 @@ function changeVolume() {
   } else {
     volumeBtn.innerHTML = "volume_up";
   }
+  oldvolume = mainAudio.volume;
 }
