@@ -487,7 +487,7 @@ body {
     grid-column: 1/2;
   }
   .container .list_container .list_flow {
-    height: 90% !important;
+    height: 510px !important;
   }
   .container .list_container.hide_min {
     display: none;
