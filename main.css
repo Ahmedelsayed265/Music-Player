@@ -486,6 +486,9 @@ body {
     -ms-grid-column-span: 1;
     grid-column: 1/2;
   }
+  .container .list_container .list_flow {
+    height: 520px !important;
+  }
   .container .list_container.hide_min {
     display: none;
   }
