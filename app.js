@@ -53,6 +53,12 @@ const musicList = [
     poster: "poster-9",
     audioSrc: "file-9",
   },
+  {
+    name: "WOAH",
+    artist: "KEAN DYSSO",
+    poster: "poster-10",
+    audioSrc: "file-10",
+  },
 ];
 const container = document.querySelector(".container"),
   imgWrapper = document.querySelector(".music_photo .poster img"),
