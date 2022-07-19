@@ -12,8 +12,8 @@ const musicList = [
     audioSrc: "file-2",
   },
   {
-    name: "Wahdy Lakn",
-    artist: "Mohammed Saeed",
+    name: "3ala 3eeni",
+    artist: "Ahmed Kamel",
     poster: "poster-3",
     audioSrc: "file-3",
   },
