@@ -481,13 +481,13 @@ body {
             transform: rotate(-90deg);
   }
   .container .list_container {
-    height: 90%;
+    height: 100%;
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;
     grid-column: 1/2;
   }
   .container .list_container .list_flow {
-    height: 100% !important;
+    height: 90% !important;
   }
   .container .list_container.hide_min {
     display: none;

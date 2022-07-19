@@ -276,10 +276,10 @@ body {
       }
     }
     .list_container {
-      height: 90%;
+      height: 100%;
       grid-column: 1/2;
       .list_flow {
-        height: 100% !important;
+        height: 90% !important;
       }
       &.hide_min {
         display: none;
