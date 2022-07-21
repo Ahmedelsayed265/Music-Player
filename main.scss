@@ -199,7 +199,7 @@ body {
     }
     .list_flow,
     .fav_list {
-      height: 400px;
+      height: 390px;
       overflow-y: scroll;
       &::-webkit-scrollbar {
         width: 0;
@@ -270,7 +270,7 @@ body {
           min-height: 38px;
           min-width: 38px;
         }
-        input{
+        input {
           transform: rotate(-90deg);
         }
       }
@@ -278,7 +278,8 @@ body {
     .list_container {
       height: 100%;
       grid-column: 1/2;
-      .list_flow {
+      .list_flow,
+      .fav_list {
         height: 520px !important;
       }
       &.hide_min {

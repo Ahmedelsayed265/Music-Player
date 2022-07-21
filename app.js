@@ -1,7 +1,7 @@
 const musicList = [
   {
-    name: "After Dark",
-    artist: "Mr.Kitty",
+    name: "Lellّy ",
+    artist: "Mohamed Mounir",
     poster: "poster-1",
     audioSrc: "file-1",
   },
@@ -58,6 +58,24 @@ const musicList = [
     artist: "KEAN DYSSO",
     poster: "poster-10",
     audioSrc: "file-10",
+  },
+  {
+    name: "Helfatly",
+    artist: "Lama Shreif",
+    poster: "poster-11",
+    audioSrc: "file-11",
+  },
+  {
+    name: "Plain Jane",
+    artist: "Nicki Minaj",
+    poster: "poster-12",
+    audioSrc: "file-12",
+  },
+  {
+    name: "After Dark",
+    artist: "Mr.Kitty",
+    poster: "poster-13",
+    audioSrc: "file-13",
   },
 ];
 const container = document.querySelector(".container"),
